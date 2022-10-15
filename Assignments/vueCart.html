@@ -1,0 +1,42 @@
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <script src="https://unpkg.com/vue@next"></script>
+      <link rel="stylesheet" href="cart.css">
+   </head>
+   <body>
+      <div id="app">
+         <table>
+            <tr>
+               <th>Item</th>
+               <th>Unit Price</th>
+               <th>Quantity</th>
+               <th>Total</th>
+            </tr>
+            <tr>
+               <td>{{ name }}</td>
+               <td>{{ unitPrice }}</td>
+               <td>
+                  <input type="number" v-model.number="quantity">  
+                  <!-- .number converts data to number 
+                     (data in inputs is always a string)-->
+                  <div class="error-message" v-if="quantityError">{{ quantityError }}</div>
+               </td>
+               <td>
+                  <!-- Only display total if there is no error -->
+                  <div v-if="quantityError">
+                     Invalid quantity
+                  </div>
+                  <div v-else>
+                     ${{ total }}
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+   <script src="./vueCart.js"></script>
+</html>
